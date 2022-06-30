@@ -4,4 +4,8 @@ export default StyleSheet.create({
   container: {
     flex: 1,
   },
+  link: {
+    alignSelf: 'center',
+    color: 'red',
+  },
 });

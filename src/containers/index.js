@@ -11,7 +11,7 @@ export default ({navigation}) => {
       <TouchableOpacity onPress={() => navigation.navigate('Home')}>
         <Text style={styles.link}>Home</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Screen')}>
+      <TouchableOpacity onPress={() => navigation.push('Screen')}>
         <Text style={styles.link}>Screen</Text>
       </TouchableOpacity>
     </View>
