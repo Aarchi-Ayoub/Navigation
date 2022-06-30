@@ -5,14 +5,17 @@ export default ({navigation}) => {
   console.log(navigation);
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.push('Auth')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Auth')}>
         <Text style={styles.link}>Auth</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Home')}>
         <Text style={styles.link}>Home</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.push('Screen')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Screen')}>
         <Text style={styles.link}>Screen</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+        <Text style={styles.link}>Drawer</Text>
       </TouchableOpacity>
     </View>
   );

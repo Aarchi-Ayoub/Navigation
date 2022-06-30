@@ -1,81 +1,50 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
-
+import {createDrawerNavigator} from '@react-navigation/drawer';
+// Modules
 import Containers from 'containers';
 import Home from 'containers/Home';
 import Auth from 'containers/Auth';
 import Screen from 'containers/Screen';
-import {Image, StyleSheet} from 'react-native';
 
 export default () => {
-  const BottomStack = createBottomTabNavigator();
-  const ContainersStack = createStackNavigator();
-
-  const ContainersStackScreens = () => {
+  const Stack = createStackNavigator();
+  const Drawer = createDrawerNavigator();
+  const StackScreen = () => {
     return (
-      <ContainersStack.Navigator>
-        <ContainersStack.Screen name="Containers" component={Containers} />
-
-        <ContainersStack.Screen
+      <Stack.Navigator>
+        <Stack.Screen
+          // options={{
+          //   headerShown: false,
+          // }}
+          name="Containers"
+          component={Containers}
+        />
+        <Stack.Screen
           name="Screen"
           component={Screen}
-          options={{
-            headerShown: false,
-          }}
+          // options={{
+          //   headerShown: false,
+          // }}
         />
-      </ContainersStack.Navigator>
+      </Stack.Navigator>
     );
   };
-
   return (
     <NavigationContainer>
-      <BottomStack.Navigator>
-        <BottomStack.Screen
-          name="Containers"
-          component={ContainersStackScreens}
+      <Drawer.Navigator useLegacyImplementation>
+        <Drawer.Screen
           options={{
             headerShown: false,
-            tabBarIcon: () => (
-              <Image
-                source={require('../assets/green.png')}
-                style={styles.icons}
-              />
-            ),
           }}
+          name="Containers"
+          component={StackScreen}
         />
-        <BottomStack.Screen
-          options={{
-            tabBarIcon: () => (
-              <Image
-                source={require('../assets/gray.png')}
-                style={styles.icons}
-              />
-            ),
-          }}
-          name="Home"
-          component={Home}
-        />
-        <BottomStack.Screen
-          options={{
-            tabBarIcon: () => (
-              <Image
-                source={require('../assets/red.png')}
-                style={styles.icons}
-              />
-            ),
-          }}
-          name="Auth"
-          component={Auth}
-        />
-      </BottomStack.Navigator>
+        <Drawer.Screen name="Home" component={Home} />
+
+        <Drawer.Screen name="Auth" component={Auth} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 };
-const styles = StyleSheet.create({
-  icons: {
-    height: 20,
-    width: 20,
-  },
-});
